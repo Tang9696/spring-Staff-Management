@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>DarkPan - Bootstrap 5 Admin Template</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="" name="keywords">
+<meta content="" name="description">
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+ <link th:href="@{/css/css2.css}" rel="stylesheet">
+ <link th:href="@{/css/all.min.css}" rel="stylesheet">
+ <link th:href="@{/css/bootstrap-icons.css}" rel="stylesheet">
+ <link th:href="@{/css/owl.carousel.min.css}" rel="stylesheet">
+ <link th:href="@{/css/tempusdominus-bootstrap-4.min.css}" rel="stylesheet">
+ <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+ <link th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+<body>
+<div class="container-fluid position-relative d-flex p-0">
+
+<div id="spinner" class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+<div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+<span class="sr-only">Loading...</span>
+</div>
+</div>
+
+ <!--侧边栏-->
+ <div class="sidebar pe-4 pb-3" >
+    <nav th:replace="~{commons/commons :: sidebar(active='table.html')}"></nav>
+ </div>
+
+
+
+<div class="content">
+ <!--头部栏-->
+ <nav th:replace="~{commons/commons :: topbar}"></nav>
+
+
+<div class="container-fluid pt-4 px-4">
+<div class="row g-4">
+<div class="col-12">
+<div class="bg-secondary rounded h-100 p-4">
+<h6 class="mb-4">Employees Table</h6>
+    <h2><a class="btn btn-sm btn-success" th:href="@{/emp}">Add Employe</a></h2>
+<div class="table-responsive">
+
+
+ <table class="table">
+<thead>
+<tr>
+<th scope="col">Id</th>
+<th scope="col">Last Name</th>
+<th scope="col">Email</th>
+<th scope="col">Gender</th>
+<th scope="col">Department</th>
+<th scope="col">Birth</th>
+ <th>editor</th>
+</tr>
+</thead>
+<tbody>
+<tr th:each="emp:${emps}">
+   <td th:text="${emp.getId()}"></td>
+   <td th:text="${emp.getLastname()}"></td>
+   <td th:text="${emp.getEmail()}"></td>
+   <td th:text="${emp.getGender()==0?'womman':'man'}"></td>
+   <td th:text="${emp.department.getDepartmentName()}"></td>
+<!--   <td th:text="${#dates.format(emp.getBirth(),'yyyy-MM-dd')}"></td>-->
+    <td th:text="${emp.getBirth()}"></td>
+   <td>
+     <a class="btn btn-sm btn-light" th:href="@{/emp/}+${emp.getId()}">editor</a>
+     <a class="btn btn-sm btn-danger" th:href="@{/empdelete/}+${emp.getId()}">delete</a>
+   </td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+ </div>
+</div>
+
+
+<div class="container-fluid pt-4 px-4">
+<div class="bg-secondary rounded-top p-4">
+<div class="row">
+<div class="col-12 col-sm-6 text-center text-sm-start">
+<!--Copyright &copy; 2022.Company name All rights reserved.<a target="_blank" href="https://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a>-->
+</div>
+<div class="col-12 col-sm-6 text-center text-sm-end">
+
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+
+<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+</div>
+
+<script data-cfasync="false" src="static/js/email-decode.min.js"></script>
+<script th:src="@{/js/jquery-3.4.1.min.js}" type="c41f3a8eab52fecccd018075-text/javascript"></script>
+<script th:src="@{/js/bootstrap.bundle.min.js}" type="c41f3a8eab52fecccd018075-text/javascript"></script>
+<script th:src="@{/js/chart.min.js}" type="c41f3a8eab52fecccd018075-text/javascript"></script>
+<script th:src="@{/js/easing.min.js}" type="c41f3a8eab52fecccd018075-text/javascript"></script>
+<script th:src="@{/js/waypoints.min.js}" type="c41f3a8eab52fecccd018075-text/javascript"></script>
+<script th:src="@{/js/owl.carousel.min.js}" type="c41f3a8eab52fecccd018075-text/javascript"></script>
+<script th:src="@{/js/moment.min.js}" type="c41f3a8eab52fecccd018075-text/javascript"></script>
+<script th:src="@{/js/moment-timezone.min.js}" type="c41f3a8eab52fecccd018075-text/javascript"></script>
+<script th:src="@{/js/tempusdominus-bootstrap-4.min.js}" type="c41f3a8eab52fecccd018075-text/javascript"></script>
+
+<script th:src="@{/js/main.js}" type="c41f3a8eab52fecccd018075-text/javascript"></script>
+<script th:src="@{/js/rocket-loader.min.js}" data-cf-settings="c41f3a8eab52fecccd018075-|49" defer=""></script></body>
+</html>

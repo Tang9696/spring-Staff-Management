@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springstaffmanagement.mapper.RoleMapper">
+
+    <resultMap id="getpermissionmap" type="com.example.springstaffmanagement.pojo.Role">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <association property="permissionRoles"
+                     select="com.example.springstaffmanagement.mapper.PermissionRoleMapper.getpermissionid"
+                     column="id"/>
+    </resultMap>
+    <select id="getallrole" resultMap="getpermissionmap">
+        select * from role where id = #{rid};
+    </select>
+
+</mapper>
